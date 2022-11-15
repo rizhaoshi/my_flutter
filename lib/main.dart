@@ -52,7 +52,8 @@ import 'package:get/get.dart';
 // import 'getx/BottomSheet_A.dart';
 // import 'getx/Navigation_A.dart';
 // import 'getx/Navigation_B.dart';
-import 'getx/ObxCount_A.dart';
+// import 'getx/ObxCount_A.dart';
+import 'network/Dio_HttpUtil_A.dart';
 
 void main() {
   runApp(MyApp());
@@ -65,27 +66,21 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       title: "MyFlutter",
-      // theme: ThemeData(
-      //   primaryColor: Colors.red,
-      //   accentColor: Colors.yellow,
-      //   buttonTheme: ButtonThemeData(
-      //       textTheme: ButtonTextTheme.primary,
-      //       height: 50,
-      //       splashColor: Colors.green),
-      //   textTheme: TextTheme(
-      //       subtitle1: TextStyle(
-      //     fontSize: 30,
-      //     color: Colors.green,
-      //   )),
-      //   iconTheme: IconThemeData(
-      //     color: Colors.pink[100],
-      //     size: 40,
-      //   ),
-      //   cardTheme: CardTheme(
-      //       color: Colors.brown[100],
-      //       shape: Border.all(width: 2, color: Colors.red),
-      //       elevation: 20),
-      // ),
+      theme: ThemeData(
+        primaryColor: Colors.red,
+        accentColor: Colors.yellow,
+        buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary, height: 50, splashColor: Colors.green),
+        textTheme: TextTheme(
+            subtitle1: TextStyle(
+          fontSize: 30,
+          color: Colors.green,
+        )),
+        iconTheme: IconThemeData(
+          color: Colors.pink[100],
+          size: 40,
+        ),
+        cardTheme: CardTheme(color: Colors.brown[100], shape: Border.all(width: 2, color: Colors.red), elevation: 20),
+      ),
       //适配终端的主题风格
       // theme: ThemeData.light(),
       // darkTheme: ThemeData.dark(),
@@ -103,7 +98,7 @@ class MyApp extends StatelessWidget {
       //       page: () => ProductDetail(),
       //       transition: Transition.rightToLeft),
       // ],
-      home: Home(),
+      home: DioHome(),
       // // 声明命名路由
       // routes: {
       //   'home': (context) => Home(),
@@ -149,8 +144,7 @@ class MyApp extends StatelessWidget {
         print('languageCode: ${locale!.languageCode}');
         print('countryCode: ${locale.countryCode}');
         for (var supportedLocale in supportedLocales) {
-          if (supportedLocale.languageCode == locale.languageCode &&
-              supportedLocale.countryCode == locale.countryCode) {
+          if (supportedLocale.languageCode == locale.languageCode && supportedLocale.countryCode == locale.countryCode) {
             return supportedLocale;
           }
         }
